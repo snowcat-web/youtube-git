@@ -14,7 +14,8 @@ const VideoBody = (props) => {
   else {
     return(
       <div className="Selected-container">
-        <div><VideoSelected video={props.videoSelected} /></div>        
+        <div><VideoSelected video={props.videoSelected}
+                            favorite={props.addFavorite} /></div>        
         <div className="listed-videos">
           <VideoList onVideoSelect={props.onVideoSelect}
                       videos={props.videos} 

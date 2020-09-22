@@ -4,6 +4,7 @@ import './VideoList.css';
 
 const VideoSelected = (props) => {
     const video = props.video;
+    const addFavorite = props.addFavorite;
     
     if(!video){
         return <div>Loading...</div>;
@@ -34,8 +35,9 @@ const VideoSelected = (props) => {
           </div>
         </div>
         <div className="video-description">
-          <div>{video.snippet.title}</div>
+          <div> <h3> {video.snippet.title} </h3> </div>
           <div>{video.snippet.description}</div>
+          <div> <button onClick={() => addFavorite(video)} >Add to favorites</button> </div>
         </div>
       </div>
     );

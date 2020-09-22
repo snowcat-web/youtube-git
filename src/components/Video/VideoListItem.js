@@ -8,7 +8,7 @@ const VideoListItem = (props) => {
   const imageUrl = video.snippet.thumbnails.default.url;
 
   return (
-    <li onClick={() => onUserSelected(video)} className="list-group-item">    
+    <li onClick={() => onUserSelected(video)}>    
       {/* <div className="video-list media">
         <div className="media-left">
           <img className="media-object" src={imageUrl} />
@@ -25,7 +25,7 @@ const VideoListItem = (props) => {
         <img className="media-object" src={imageUrl}   />
         </div>
         <div>
-        <span style={{ fontWeight: 'bold' }}> {video.snippet.title} </span> {" | "} {video.snippet.description}
+        <span style={{ fontWeight: 'bold' }}> {video.snippet.title} </span> 
         </div>
       </div>
     </li>

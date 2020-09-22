@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './sideNav.css';
 
@@ -10,8 +11,8 @@ const sideNav = props => {
     return (
         <nav className={navBarClasses}>
         <ul>
-            <li><a href="/"> Videos</a></li>
-            <li> <a href="/favorites"> Favorites</a></li>
+            <li><Link to="/"> Videos </Link> </li>
+            <li> <Link to= "/favorites"> Favorites </Link>  </li>
         </ul>
     </nav>
 
@@ -19,6 +20,4 @@ const sideNav = props => {
 
 };
     
-
-
 export default sideNav

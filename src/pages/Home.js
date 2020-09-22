@@ -1,12 +1,12 @@
-/*import "./App.css";
 import React, { useState, useEffect } from "react";
-import YTSearch from "./components/YoutubeSearch";
-import VideoBody from "./components/Video/VideoBody";
-import Navigation from "./components/Navigation";
+import YTSearch from "../components/YoutubeSearch";
+import VideoBody from "../components/Video/VideoBody";
+import Navigation from "../components/Navigation";
+ 
 
 const API_KEY = "AIzaSyB-YiVwk4DoZ-K4NjLcayTWYG7OGZZ9DxE";
 
-const App = () => {
+const Home = () => {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
 
@@ -38,23 +38,4 @@ const App = () => {
   );
 };
 
-export default App;*/
-import './App.css';
-import React from 'react';
-import Home from './pages/Home';
-import Favorites from './pages/Favorites';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-const App = () => {
-    return(
-        <Router>
-            <Switch>
-                <Route path = '/' exact component={Home} />
-                <Route path = '/favorites' component={Favorites} />
-            </Switch>
-        </Router>
-        
-    );
-}
-
-export default App;
+export default Home;

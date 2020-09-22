@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import "./Toolbar.css";
 import SideNavButton from "../SideNav/sideNavButton";
-import SearchBox from "./SearchField";
-
 
 const Toolbar = (props) => {
   
   const onInputChange = (event) => {
     if (event.key === "Enter") {
-        console.log(event.target.value);
-        props.onSearchTermChange(event.target.value);
+        props.onSearchChange(event.target.value);
     }    
   };
 
@@ -36,9 +33,6 @@ const Toolbar = (props) => {
             <li>
               <a href="/">Perfil</a>
             </li>
-            {/* <li>
-              <a href="/">Link 2</a>
-            </li> */}
           </ul>
         </div>
       </nav>
