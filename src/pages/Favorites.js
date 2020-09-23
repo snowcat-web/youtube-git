@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Navigation from '../components/Navigation';
 import VideoBody from '../components/Video/VideoBody';
+import YTSearch from "../components/YoutubeSearch";
 
 const Favorites = () => {
-    const[favoriteVids, setFavoriteVids] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [videos, setVideos] = useState([]);
 
-    const addFavorite = (favorite) => {
-        setFavoriteVids(favorite);        
-    }
+    useEffect(() => {
+        fetchResource();
+    }, []);
+
+    const fetchResource = () => {
+        const favVideos = localStorage.getItem("favVideos");
+        console.log(favVideos)
+    };
 
     return (
       <div>
@@ -16,9 +22,8 @@ const Favorites = () => {
         <div className="content">
           <VideoBody
             onVideoSelect={(selected) => setSelectedVideo(selected)}
-            videos={favoriteVids}
+            videos={videos}
             videoSelected={selectedVideo}
-            addFavorite={addFavorite(favorite)}
           />
         </div>
       </div>

@@ -5,7 +5,12 @@ import VideoSelected from './VideoSelected';
 
 import './VideoList.css';
 
-const VideoBody = (props) => {  
+const VideoBody = (props) => {
+
+  const addFavorite = (videoId) => {
+    props.addFavorite(videoId)
+  }
+
   if (props.videoSelected == null) {
     return (
       <VideoList onVideoSelect={props.onVideoSelect} videos={props.videos} format="grid-video" />
@@ -15,7 +20,7 @@ const VideoBody = (props) => {
     return(
       <div className="Selected-container">
         <div><VideoSelected video={props.videoSelected}
-                            favorite={props.addFavorite} /></div>        
+                            addFavorite={addFavorite} /></div>
         <div className="listed-videos">
           <VideoList onVideoSelect={props.onVideoSelect}
                       videos={props.videos} 

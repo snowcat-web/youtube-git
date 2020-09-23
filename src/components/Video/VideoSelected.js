@@ -4,8 +4,6 @@ import './VideoList.css';
 
 const VideoSelected = (props) => {
     const video = props.video;
-    const addFavorite = props.addFavorite;
-    
     if(!video){
         return <div>Loading...</div>;
     }
@@ -13,6 +11,9 @@ const VideoSelected = (props) => {
     const videoId = video.id.videoId;
     const url = `https://www.youtube.com/embed/${videoId}`;
 
+    const handleClick = () => {
+        props.addFavorite(videoId)
+    }
     return (
       <div className="video-content">
         {/* <div className="video-player"> 
@@ -37,7 +38,7 @@ const VideoSelected = (props) => {
         <div className="video-description">
           <div> <h3> {video.snippet.title} </h3> </div>
           <div>{video.snippet.description}</div>
-          <div> <button onClick={() => addFavorite(video)} >Add to favorites</button> </div>
+          <div> <button onClick={handleClick} >Add to favorites</button> </div>
         </div>
       </div>
     );
