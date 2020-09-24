@@ -29,11 +29,17 @@ const Home = () => {
     };
 
     const addFavorite = (favorite) => {
+        const favVideos = localStorage.getItem("favVideos");
+        if(favVideos!=null){
+            setFavoriteVideos(JSON.stringify(favVideos));
+            console.log("prueba: ", favoriteVideos);
+        }
         const index = favoriteVideos.indexOf(favorite);
         if (index === -1) {
             const favVideos = [favorite, ...favoriteVideos];
             setFavoriteVideos(favVideos);
-            localStorage.setItem("favVideos", favVideos.join(";"));
+            localStorage.setItem("favVideos", JSON.stringify(favVideos));
+            console.log("home:", favVideos);
         }
     }
 

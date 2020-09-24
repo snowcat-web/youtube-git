@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Navigation from '../components/Navigation';
 import VideoBody from '../components/Video/VideoBody';
-import YTSearch from "../components/YoutubeSearch";
 
 const Favorites = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -13,7 +12,8 @@ const Favorites = () => {
 
     const fetchResource = () => {
         const favVideos = localStorage.getItem("favVideos");
-        console.log(favVideos)
+        console.log(JSON.parse(favVideos));
+        setVideos(JSON.parse(favVideos));
     };
 
     return (

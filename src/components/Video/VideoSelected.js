@@ -12,7 +12,8 @@ const VideoSelected = (props) => {
     const url = `https://www.youtube.com/embed/${videoId}`;
 
     const handleClick = () => {
-        props.addFavorite(videoId)
+        props.addFavorite(video)
+        console.log(video);
     }
     return (
       <div className="video-content">
