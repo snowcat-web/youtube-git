@@ -24,7 +24,8 @@ const Navigation = (props) => {
   return (
     <div>
       <Toolbar sideNavOpenHandler={sideNavOpenHandler}
-      onSearchChange={props.onSearchChange}  />
+      onSearchChange={props.onSearchChange}
+      placeholder = {props.placeholder}  />
       <SideNav show={sideNavOpen} />
       {backdrop}
       </div>    

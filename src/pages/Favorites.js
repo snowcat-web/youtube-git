@@ -12,8 +12,11 @@ const Favorites = () => {
 
     const fetchResource = () => {
         const favVideos = localStorage.getItem("favVideos");
-        console.log(JSON.parse(favVideos));
-        setVideos(JSON.parse(favVideos));
+        if(favVideos!=null){
+          console.log(JSON.parse(favVideos));
+          setVideos(JSON.parse(favVideos));
+        }
+        
     };
 
     return (

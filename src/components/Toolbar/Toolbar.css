@@ -1,7 +1,7 @@
 .toolbar {
     width: 100%;
     position: fixed;
-    background: #522152;
+    background: #0049B7;
     height: 55px;
 }
 
@@ -53,8 +53,8 @@
     box-sizing: border-box;
     width: 300px;
     background-image: url('../../img/SearchIcon.png');
-    background-position: 5px 5px;
+    background-position: 5px 6px;
     background-repeat: no-repeat;
-    background-size: 25px;
+    background-size: 22px;
     font-size: 20px;
 }

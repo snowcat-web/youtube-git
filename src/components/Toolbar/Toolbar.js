@@ -24,6 +24,7 @@ const Toolbar = (props) => {
           <div className="search-bar">
             <input
                 onKeyPress = {onInputChange}
+                placeholder= {props.placeholder}
             />
           </div>
         </div>

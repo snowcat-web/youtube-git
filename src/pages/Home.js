@@ -7,12 +7,14 @@ import Navigation from "../components/Navigation";
 const API_KEY = "AIzaSyB-YiVwk4DoZ-K4NjLcayTWYG7OGZZ9DxE";
 
 const Home = () => {
+    const placeholder = "wizeline";
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [favoriteVideos, setFavoriteVideos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(placeholder);
 
     useEffect(() => {
-        fetchResource("kittens");
+        fetchResource(searchTerm);
     }, []);
 
     const fetchResource = async (item) => {
@@ -25,6 +27,8 @@ const Home = () => {
     };
 
     const handleSearchChange = async (value) => {
+        setSearchTerm(value);
+        setSelectedVideo(null);
         await fetchResource(value)
     };
 
@@ -45,7 +49,8 @@ const Home = () => {
 
     return (
         <div>
-            <Navigation onSearchChange={handleSearchChange}/>
+            <Navigation onSearchChange={handleSearchChange}
+                        placeholder = {placeholder} />
             <div className="content">
                 <VideoBody onVideoSelect={selected => setSelectedVideo(selected)}
                            videos={videos}
