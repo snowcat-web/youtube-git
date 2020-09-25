@@ -19,14 +19,19 @@ const Favorites = () => {
         
     };
 
+    const handleSearchChange = async (value) => {      
+      //Search only in favs?
+  };
+
     return (
       <div>
-        <Navigation />
+        <Navigation onSearchChange={handleSearchChange} />
         <div className="content">
           <VideoBody
             onVideoSelect={(selected) => setSelectedVideo(selected)}
             videos={videos}
             videoSelected={selectedVideo}
+            section={'favorites'}
           />
         </div>
       </div>

@@ -57,6 +57,7 @@ const Home = () => {
                            videos={videos}
                            videoSelected={selectedVideo}
                            addFavorite={addFavorite}
+                           section={'home'}
                 />
             </div>
         </div>

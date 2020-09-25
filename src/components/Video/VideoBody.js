@@ -9,8 +9,16 @@ const VideoBody = (props) => {
 
   if('error' in props.videos){
     return(
-      <div className="Error-title">        
+      <div className="Message-title">        
         <p>{props.videos.error.message}</p>        
+      </div>   
+    );
+  }
+
+  if(props.section==='favorites' && props.videos.length==0){
+    return(
+      <div className="Message-title">        
+        <p>No favorites added</p>        
       </div>   
     );
   }
