@@ -23,6 +23,7 @@ module.exports = function (options, callback) {
       }
     })
     .catch(function (error) {
+      callback(error.response.data);
       console.error(error);
     });
 };

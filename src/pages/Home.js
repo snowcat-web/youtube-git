@@ -11,7 +11,7 @@ const Home = () => {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [favoriteVideos, setFavoriteVideos] = useState([]);
-    const [searchTerm, setSearchTerm] = useState(placeholder);
+    const [searchTerm, setSearchTerm] = useState(placeholder);    
 
     useEffect(() => {
         fetchResource(searchTerm);
@@ -27,6 +27,7 @@ const Home = () => {
     };
 
     const handleSearchChange = async (value) => {
+        setVideos([]);
         setSearchTerm(value);
         setSelectedVideo(null);
         await fetchResource(value)

@@ -7,9 +7,25 @@ import './VideoList.css';
 
 const VideoBody = (props) => {
 
+  if('error' in props.videos){
+    return(
+      <div className="Error-title">        
+        <p>{props.videos.error.message}</p>        
+      </div>   
+    );
+  }
+
   const addFavorite = (videoId) => {
     props.addFavorite(videoId)
   }
+
+  if(props.videos.length == 0) {
+    return(
+      <div className="Loading-title">         
+        <p>Loading...</p>
+      </div>      
+    );
+  };
 
   if (props.videoSelected == null) {
     return (
