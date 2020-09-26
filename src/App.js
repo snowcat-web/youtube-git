@@ -43,6 +43,7 @@ import './App.css';
 import React from 'react';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
+import Login from './pages/Login';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
             <Switch>
                 <Route path = '/' exact component={Home} />
                 <Route path = '/favorites' component={Favorites} />
+                <Route path = '/login' component={Login} />
             </Switch>
         </Router>
         

@@ -3,7 +3,6 @@ import YTSearch from "../components/YoutubeSearch";
 import VideoBody from "../components/Video/VideoBody";
 import Navigation from "../components/Navigation";
 
-
 const API_KEY = "AIzaSyB-YiVwk4DoZ-K4NjLcayTWYG7OGZZ9DxE";
 
 const Home = () => {
@@ -58,7 +57,7 @@ const Home = () => {
                            videoSelected={selectedVideo}
                            addFavorite={addFavorite}
                            section={'home'}
-                />
+                />                
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./Toolbar.css";
 import SideNavButton from "../SideNav/sideNavButton";
+import Profile from "../Profile/Profile";
 
 const Toolbar = (props) => {
   
@@ -30,9 +31,9 @@ const Toolbar = (props) => {
         </div>
         <div className="needSomeSpace" />
         <div className="toolbar_navigation_links">
-          <ul>
+          <ul>            
             <li>
-              <a href="/">Perfil</a>
+              <Profile />
             </li>
           </ul>
         </div>

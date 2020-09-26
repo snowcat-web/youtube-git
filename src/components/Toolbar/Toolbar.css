@@ -42,10 +42,11 @@
     text-decoration: none;
 }
 
-.toolbar_navigation_links a:hover,
+/*.toolbar_navigation_links a:hover,
 .toolbar_navigation_links a:active {
-    color: orange;
-}
+    /*color: orange;
+    background: #bfefff;
+}*/
 
 .search-bar input{
     padding: 6px 6px 8px 40px;
@@ -58,3 +59,4 @@
     background-size: 22px;
     font-size: 20px;
 }
+
