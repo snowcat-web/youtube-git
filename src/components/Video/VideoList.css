@@ -8,13 +8,8 @@
 }
 
 .grid-video ul li {
-  width: 320px;
-  height: 380px;
- /* text-align: left;
-  padding-bottom: 20px;
-  border-style: ridge; 
-  border-color: grey;
-  border-radius: 5px;*/
+  width: 328px;
+  height: 390px;
   border: 1px solid #1D9AF2;
   border-radius: 4px;
   padding: 3px 3px 30px 3px;
@@ -26,8 +21,7 @@
 }
 
 .grid-video ul li:hover {
-  background:#47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 ) ;
-  color: white;
+  background:#ADD8E6 /*radial-gradient(circle, transparent 1%, #F0F8FF ) ; */
 }
 
 .Selected-container{  
@@ -37,10 +31,7 @@
   padding-top: 15px;
 }
 
-.listed-videos{
-  /*padding-left: 69%;*/
-  /*width: 30%;
-  align-items: flex-end;*/  
+.listed-videos{  
   padding-left: 63%;
   width: auto;  
 }
@@ -54,18 +45,11 @@
   list-style-type: none;
 }
 
-.list-video ul li {
-  /*width: 320px;*/
+.list-video ul li {  
   height: 91px;
-  text-align: left;
-  /*padding-bottom: 20px;  */
-  /*cursor: pointer;
-  border: grey;
-  border-radius: 0.5px;
-  border-style: solid;*/
+  text-align: left;  
   border: 1px solid #1D9AF2;
-  border-radius: 4px;
-  /*padding: 3px 3px 30px 3px;*/
+  border-radius: 4px;  
   padding-top: 1px;
   padding-left: 1px;
   box-shadow: 0 0 4px #999;
@@ -75,10 +59,8 @@
 }
 
 .list-video ul li:hover {
-  background:#47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 ) ;
-  color: white;
+  background:#ADD8E6  
 }
-
 
 .video-player-item {
    width: 65%;
@@ -87,14 +69,9 @@
    position: fixed;
 }
 
-/*.video-details{
-  position: fixed;
-  padding-top: 515px;  
-  width: 70%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  z-index: -1;
-}*/
+.video-grid-description{
+  color: grey;
+}
 
 .video-description{
   position: fixed;
@@ -135,14 +112,30 @@
   font-size: 20px;
   font-weight: bold;
 }
-/*.video-player{
-  padding-top:15px;
-}*/
-
-/* .video-detail .details{
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-} */
-
+.favorite-button {
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+.favorite-button:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+.favorite-button:active {
+	position:relative;
+	top:1px;
+}
+.favorite-position{
+  display: flex;
+  justify-content: center;
+}

@@ -5,7 +5,7 @@ import SideNavButton from "../SideNav/sideNavButton";
 import Profile from "../Profile/Profile";
 
 const Toolbar = (props) => {
-  
+    
   const onInputChange = (event) => {
     if (event.key === "Enter") {
         props.onSearchChange(event.target.value);

@@ -1,5 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import  { Redirect } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+
+import LoginInfo from '../components/Login/LoginInfo';
 
 const Button = styled.button`
   /* Adapt the colors based on primary prop */
@@ -24,12 +28,14 @@ justify-content:center; // centers in the flex direction and the default flex-di
 align-items:center; // centers perpendicular to the flex direction
 height: 100vh; // 100% view height
 width: 100vw; // 100% view width
-position: absolute; // so it goes behind the current content
+position: absolute; // so it goes behind the current content;
+flex-direction: column;
+grid-row-gap: 25px;
 `;
 
 const Screen = styled.div`
   /* all declarations will be prefixed */  
-  background: papayawhip;    
+  background: royalblue;    
   height:100%;
   width:100%;
   position:absolute;  
@@ -43,12 +49,79 @@ const Screen = styled.div`
     height: 100%;
 `;
 
+const Input = styled.input`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: ${props => props.inputColor || "palevioletred"};
+  /*background: papayawhip;*/
+  border: none;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  
+`;
+
+const Hint = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Error = styled.div`
+  color: palevioletred;
+  font-weight: bold;
+`;
+// Create a Wrapper component that'll render a <section> tag with some styles
+const Wrapper = styled.section`
+  padding: 4em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;  
+  background: papayawhip; 
+`;
+
 const Login = (props) => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  let history = useHistory();  
+  
+  const HandleLogin = async () => {
+    const loginStatus = JSON.parse(await LoginInfo(userName, password));
+    if(loginStatus){
+      if(loginStatus.response){
+        localStorage.setItem("USER-APP", JSON.stringify(loginStatus));
+        history.push('/');
+      }
+      else{
+        setError(loginStatus.error);
+      }
+      
+    }
+  };
+
   return (
     <Screen>
       <LogoContainer>
-        <Button>Login</Button>
-        <Button cancel>Cancel</Button>
+        <Wrapper>
+        <div>
+          <Input type="text" onChange={(e) => setUserName(e.target.value)} />
+        </div>
+        <div>
+          <Input type="password" inputColor="rebeccapurple" onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <div>
+          <Button onClick={HandleLogin}>Login</Button>
+          <Button cancel>Cancel</Button>
+        </div>
+        <div>
+          <Hint>Hint: User / User</Hint>
+        </div>
+        <div>
+          <Error> {error}  </Error>
+        </div>
+
+        </Wrapper>
+        
       </LogoContainer>
     </Screen>
   );

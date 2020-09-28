@@ -37,6 +37,9 @@
   
   .menu-trigger img {
     border-radius: 90px;
+    width: 30px;
+    height: 30px;
+
   }
   
   .menu {
@@ -45,7 +48,7 @@
     position: absolute;
     top: 60px;
     right: 0;
-    width: 100px;
+    width: 120px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
@@ -67,6 +70,8 @@
   
   .menu li {
     border-bottom: 1px solid #dddddd;
+    width: 100%;
+    border-radius: 8px;
   }
   
   .menu li a {

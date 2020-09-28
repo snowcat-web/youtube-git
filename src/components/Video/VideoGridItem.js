@@ -18,7 +18,7 @@ const VideoGridItem = (props) => {
             <h3>{video.snippet.title}</h3>
           </div>
         </div>
-        <div>{video.snippet.description}</div>
+        <div className="video-grid-description">{video.snippet.description}</div>
       </div>
     </li>
   );

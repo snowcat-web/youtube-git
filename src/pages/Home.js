@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import YTSearch from "../components/YoutubeSearch";
 import VideoBody from "../components/Video/VideoBody";
 import Navigation from "../components/Navigation";
+import LoginStatus from "../components/Login/LoginStatus";
 
 const API_KEY = "AIzaSyB-YiVwk4DoZ-K4NjLcayTWYG7OGZZ9DxE";
 
@@ -11,9 +12,11 @@ const Home = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [favoriteVideos, setFavoriteVideos] = useState([]);
     const [searchTerm, setSearchTerm] = useState(placeholder);    
+    //const { isLoggedIn } = LoginStatus();
 
     useEffect(() => {
         fetchResource(searchTerm);
+        //console.log("logged: ", isLoggedIn);
     }, []);
 
     const fetchResource = async (item) => {
@@ -33,19 +36,26 @@ const Home = () => {
     };
 
     const addFavorite = (favorite) => {
-        const favVideos = localStorage.getItem("favVideos");
-        if(favVideos!=null){
-            setFavoriteVideos(JSON.stringify(favVideos));
-            console.log("prueba: ", favoriteVideos);
-        }
-        const index = favoriteVideos.indexOf(favorite);
-        if (index === -1) {
-            const favVideos = [favorite, ...favoriteVideos];
-            setFavoriteVideos(favVideos);
-            localStorage.setItem("favVideos", JSON.stringify(favVideos));
+        const favVideos = localStorage.getItem("favVideos") ? localStorage.getItem("favVideos") : null;
+        let videos = [];
+        if(favVideos!=null){            
+            videos = JSON.parse(favVideos);         
+        }        
+        if (!favoritePresent(videos, favorite)) {            
+            videos.push(favorite)            
+            localStorage.setItem("favVideos", JSON.stringify(videos));
             console.log("home:", favVideos);
         }
     }
+
+    const favoritePresent = (allFavorites, favorite) => {
+        
+        for (let i=0; i < allFavorites.length; i++) {
+            if (allFavorites[i].etag == favorite.etag)
+                return true;
+        }
+        return false;
+        }
 
     return (
         <div>
