@@ -15,7 +15,7 @@ const VideoBody = (props) => {
     );
   }
 
-  if(props.section==='favorites' && props.videos.length==0){
+  if(props.section==='favorites' && props.videos.length===0){
     return(
       <div className="Message-title">        
         <p>No favorites added</p>        
@@ -27,7 +27,7 @@ const VideoBody = (props) => {
     props.addFavorite(videoId)
   }
 
-  if(props.videos.length == 0) {
+  if(props.videos.length === 0) {
     return(
       <div className="Loading-title">         
         <p>Loading...</p>
@@ -52,9 +52,7 @@ const VideoBody = (props) => {
       
       </div>
     );
-
-  }    
-
+  }
 }
 
 export default VideoBody;

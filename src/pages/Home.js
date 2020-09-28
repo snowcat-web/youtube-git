@@ -2,17 +2,14 @@ import React, {useState, useEffect} from "react";
 import YTSearch from "../components/YoutubeSearch";
 import VideoBody from "../components/Video/VideoBody";
 import Navigation from "../components/Navigation";
-import LoginStatus from "../components/Login/LoginStatus";
 
-const API_KEY = "AIzaSyB-YiVwk4DoZ-K4NjLcayTWYG7OGZZ9DxE";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Home = () => {
     const placeholder = "wizeline";
     const [videos, setVideos] = useState([]);
-    const [selectedVideo, setSelectedVideo] = useState(null);
-    const [favoriteVideos, setFavoriteVideos] = useState([]);
+    const [selectedVideo, setSelectedVideo] = useState(null);    
     const [searchTerm, setSearchTerm] = useState(placeholder);    
-    //const { isLoggedIn } = LoginStatus();
 
     useEffect(() => {
         fetchResource(searchTerm);
@@ -44,18 +41,16 @@ const Home = () => {
         if (!favoritePresent(videos, favorite)) {            
             videos.push(favorite)            
             localStorage.setItem("favVideos", JSON.stringify(videos));
-            console.log("home:", favVideos);
         }
     }
 
-    const favoritePresent = (allFavorites, favorite) => {
-        
+    const favoritePresent = (allFavorites, favorite) => {        
         for (let i=0; i < allFavorites.length; i++) {
-            if (allFavorites[i].etag == favorite.etag)
+            if (allFavorites[i].etag === favorite.etag)
                 return true;
         }
         return false;
-        }
+    }
 
     return (
         <div>

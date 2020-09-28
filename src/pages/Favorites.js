@@ -12,15 +12,14 @@ const Favorites = () => {
 
     const fetchResource = () => {
         const favVideos = localStorage.getItem("favVideos");
-        if(favVideos!=null){
-          console.log(JSON.parse(favVideos));
+        if(favVideos!=null){          
           setVideos(JSON.parse(favVideos));
         }
         
     };
 
     const handleSearchChange = async (value) => {      
-      //Search only in favs?
+      
   };
 
     return (

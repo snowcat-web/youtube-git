@@ -3,15 +3,14 @@ import "./VideoList.css";
 
 const VideoGridItem = (props) => {
   const video = props.video;
-  const onUserSelected = props.onUserSelected;
-  // console.log(video);
+  const onUserSelected = props.onUserSelected;  
   const imageUrl = video.snippet.thumbnails.medium.url;
 
   return (
     <li onClick={() => onUserSelected(video)} className="list-group-item">    
       <div className="video-list media">
         <div className="media-left">
-          <img className="media-object" src={imageUrl} />
+          <img className="media-object" src={imageUrl} alt="User avatar" />
         </div>
         <div className="video-body">
           <div className="video-body-title">

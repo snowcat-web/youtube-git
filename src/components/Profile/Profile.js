@@ -10,9 +10,22 @@ const Profile = () => {
     const userData = LoginStatus();
     let image = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";    
     let name = "?";
+    
     const onClick = () => {
       setIsActive(!isActive);
     }
+
+    const handleClickLogOut = () => {
+      localStorage.removeItem('USER-APP');
+      if(LoginStatus()===null) {
+        alert("Logged out!")
+      }
+      else {
+        alert("Error ocurred, try again");
+      }
+      
+    }
+
     if(userData!=null){
       image = userData.image;
       name = userData.name;
@@ -24,7 +37,8 @@ const Profile = () => {
           <button onClick={onClick} className="menu-trigger">          
             <span>{name}</span>          
             <img 
-              src={image}              
+              src={image}
+              alt="user"     
             /> 
           </button>
           <nav
@@ -34,7 +48,7 @@ const Profile = () => {
             <ul>              
               <li>                
               {userData !=null ?
-                <a href="/logout">Log out</a> :  <a href="/login">Log in</a>}
+                <a href="/#" onClick={handleClickLogOut}>Log out</a> :  <a href="/login">Log in</a>}
               </li>
               
             </ul>

@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import  { Redirect } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 
 import LoginInfo from '../components/Login/LoginInfo';
@@ -17,12 +16,7 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-const Buttons = styled.div`    
-    display:flex;
-
-`;
-
-const LogoContainer = styled.div`
+const MainContainer = styled.div`
 display: flex;
 justify-content:center; // centers in the flex direction and the default flex-direction is row
 align-items:center; // centers perpendicular to the flex direction
@@ -99,9 +93,13 @@ const Login = (props) => {
     }
   };
 
+  const HandleLoginCancel = async () => {
+    history.push('/');
+  }
+
   return (
     <Screen>
-      <LogoContainer>
+      <MainContainer>
         <Wrapper>
         <div>
           <Input type="text" onChange={(e) => setUserName(e.target.value)} />
@@ -111,7 +109,7 @@ const Login = (props) => {
         </div>
         <div>
           <Button onClick={HandleLogin}>Login</Button>
-          <Button cancel>Cancel</Button>
+          <Button cancel onClick={HandleLoginCancel}>Cancel</Button>
         </div>
         <div>
           <Hint>Hint: User / User</Hint>
@@ -119,10 +117,8 @@ const Login = (props) => {
         <div>
           <Error> {error}  </Error>
         </div>
-
-        </Wrapper>
-        
-      </LogoContainer>
+        </Wrapper>        
+      </MainContainer>
     </Screen>
   );
 };
