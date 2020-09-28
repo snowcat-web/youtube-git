@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './VideoList.css';
 
 const VideoSelected = (props) => {
-    //const[favoriteExists, setFavoriteExists] = useState(true);
+    //const[favoriteExists, setFavoriteExists] = useState();
     const video = props.video;
     if(!video){
         return <div>Loading...</div>;
@@ -11,7 +11,6 @@ const VideoSelected = (props) => {
     
     const videoId = video.id.videoId;
     const url = `https://www.youtube.com/embed/${videoId}`;
-    
 
     const favoritePresent = () => {
       const favVideos = localStorage.getItem("favVideos") ? localStorage.getItem("favVideos") : null;
@@ -27,7 +26,7 @@ const VideoSelected = (props) => {
       }      
       return false;
       
-    };    
+    };
 
     const handleClick = () => {
       props.addFavorite(video);
@@ -47,8 +46,15 @@ const VideoSelected = (props) => {
         }
       }
       localStorage.setItem("favVideos", JSON.stringify(videos));
+      if(props.section==="favorites"){
+        props.fetchResource();
+      }
+
       //setFavoriteExists(false)
     };
+
+
+    //setFavoriteExists(favoritePresent());
     
     return (
       <div className="video-content">

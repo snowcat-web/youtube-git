@@ -44,11 +44,14 @@ const VideoBody = (props) => {
     return(
       <div className="Selected-container">
         <div><VideoSelected video={props.videoSelected}
-                            addFavorite={addFavorite} /></div>
+                            addFavorite={addFavorite} 
+                            fetchResource={props.fetchResource}
+                            section={props.section}/></div>
         <div className="listed-videos">
           <VideoList onVideoSelect={props.onVideoSelect}
                       videos={props.videos} 
-                      format="list-video"/></div>
+                      format="list-video" 
+                      /></div>
       
       </div>
     );
