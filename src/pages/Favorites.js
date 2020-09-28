@@ -21,7 +21,10 @@ const Favorites = () => {
   };
 
   const handleSearchChange = async (value) => {
-    history.push('/');
+    history.push({
+      pathname: '/',
+      state: {detail: value}
+  });    
   };
 
   const addFavorite = (favorite) => {
@@ -35,12 +38,16 @@ const Favorites = () => {
     setVideos(videos);
   }
 
+  const selectedVideoHandle = (video) => {    
+    setSelectedVideo(video);    
+  }
+
   return (
     <div>
         <Navigation onSearchChange={handleSearchChange} />
         <div className="content">
-          <VideoBody
-            onVideoSelect={(selected) => setSelectedVideo(selected)}
+          <VideoBody            
+            onVideoSelect={selectedVideoHandle}
             videos={videos}
             videoSelected={selectedVideo}
             section={'favorites'}

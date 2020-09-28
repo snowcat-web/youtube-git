@@ -2,18 +2,26 @@ import React, {useState, useEffect} from "react";
 import YTSearch from "../components/YoutubeSearch";
 import VideoBody from "../components/Video/VideoBody";
 import Navigation from "../components/Navigation";
+import { useLocation } from "react-router-dom";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Home = () => {
-    const placeholder = "wizeline";
+    const [placeholder, setPlaceholder] = useState("wizeline");
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);    
     const [searchTerm, setSearchTerm] = useState(placeholder);    
+    const location = useLocation();
 
-    useEffect(() => {
-        fetchResource(searchTerm);
-        //console.log("logged: ", isLoggedIn);
+    useEffect(() => {        
+        if(location.state!==undefined){
+            setSearchTerm(location.state.detail);
+            setPlaceholder(location.state.detail);
+            fetchResource(location.state.detail);
+        }
+        else{
+            fetchResource(searchTerm);
+        }        
     }, []);
 
     const fetchResource = async (item) => {
@@ -52,12 +60,16 @@ const Home = () => {
         return false;
     }
 
+    const selectedVideoHandle = (video) => {
+        setSelectedVideo(video);       
+      }
+
     return (
         <div>
             <Navigation onSearchChange={handleSearchChange}
                         placeholder = {placeholder} />
             <div className="content">
-                <VideoBody onVideoSelect={selected => setSelectedVideo(selected)}
+                <VideoBody onVideoSelect={selectedVideoHandle}
                            videos={videos}
                            videoSelected={selectedVideo}
                            addFavorite={addFavorite}
