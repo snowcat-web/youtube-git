@@ -1,9 +1,10 @@
 import React from 'react';
 
+import LoginStatus from '../Login/LoginStatus';
 import './VideoList.css';
 
 const VideoSelected = (props) => {
-    //const[favoriteExists, setFavoriteExists] = useState();
+    const userData = LoginStatus();
     const video = props.video;
     if(!video){
         return <div>Loading...</div>;
@@ -77,6 +78,7 @@ const VideoSelected = (props) => {
             <h3> {video.snippet.title} </h3>{" "}
           </div>
           <div>{video.snippet.description}</div>
+          {userData!=null &&
           <div className="favorite-position">
             {" "}
             {favoritePresent() ?
@@ -87,7 +89,7 @@ const VideoSelected = (props) => {
              Add to favorites
           </button>
              }
-          </div>
+          </div> }
         </div>
       </div>
     );
