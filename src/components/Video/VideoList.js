@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import VideoGridItem from "./VideoGridItem";
 import VideoListItem from "./VideoListItem";
 import "./VideoList.css";

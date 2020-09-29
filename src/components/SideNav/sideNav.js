@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import LoginStatus from "../Login/LoginStatus";
 
 import './sideNav.css';
 
 const sideNav = props => {
+    const userData = LoginStatus();
     var navBarClasses = 'side-nav';
     if (props.show) {
         navBarClasses = 'side-nav open';
@@ -10,8 +13,10 @@ const sideNav = props => {
     return (
         <nav className={navBarClasses}>
         <ul>
-            <li><a href="/"> Videos</a></li>
-            <li> <a href="/favorites"> Favorites</a></li>
+            <li><Link to="/"> Videos </Link> </li>
+            {userData!=null &&
+            <li> <Link to= "/favorites"> Favorites </Link>  </li>
+            }
         </ul>
     </nav>
 
@@ -19,6 +24,4 @@ const sideNav = props => {
 
 };
     
-
-
 export default sideNav
