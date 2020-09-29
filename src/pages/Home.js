@@ -12,6 +12,7 @@ const Home = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);    
     const [searchTerm, setSearchTerm] = useState(placeholder);    
     const location = useLocation();
+    const [favorite, setFavorite] = useState(true);
 
     useEffect(() => {        
         if(location.state!==undefined){
@@ -50,6 +51,7 @@ const Home = () => {
             videos.push(favorite)            
             localStorage.setItem("favVideos", JSON.stringify(videos));
         }
+        setFavorite(!favorite);
     }
 
     const favoritePresent = (allFavorites, favorite) => {        
