@@ -13,10 +13,10 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ## Description
-Site that interacts with youtube API V3. 
-To see Favorites links and Add Favorite button needs to be logged in. User / User
-No bootstrap used, everything was created from scratch using CSS and React.
-Styled components used for Login page.
+Site that interacts with youtube API V3. <br />
+To see Favorites links and Add Favorite button needs to be logged in. User / User<br />
+No bootstrap used, everything was created from scratch using CSS and React.<br />
+Styled components used for Login page.<br />
 
 ### `npm test`
 
