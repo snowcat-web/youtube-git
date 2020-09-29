@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import LoginStatus from '../Login/LoginStatus';
 import './VideoList.css';
 
 const VideoSelected = (props) => {
     const userData = LoginStatus();
+    const [favorite, setFavorite] = useState();    
     const video = props.video;
     if(!video){
         return <div>Loading...</div>;
@@ -30,8 +31,7 @@ const VideoSelected = (props) => {
     };
 
     const handleClick = () => {
-      props.addFavorite(video);
-      console.log(video);
+      props.addFavorite(video);      
     };
 
     const handleClickRemove = () => {
@@ -50,10 +50,14 @@ const VideoSelected = (props) => {
       if(props.section==="favorites"){
         props.fetchResource();
       }
-
-      //setFavoriteExists(false)
+      else{
+        setFavorite(!favorite);
+      }
+     
+      
     };
 
+    
 
     //setFavoriteExists(favoritePresent());
     
