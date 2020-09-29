@@ -17,6 +17,9 @@ Site that interacts with youtube API V3. <br />
 To see Favorites links and Add Favorite button needs to be logged in. User / User<br />
 No bootstrap used, everything was created from scratch using CSS and React.<br />
 Styled components used for Login page.<br />
+<br />
+Live site: <br />
+https://practical-wescoff-38e9f5.netlify.app/ <br />
 
 ### `npm test`
 
