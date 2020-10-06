@@ -3,9 +3,8 @@ import VideoGridItem from "./VideoGridItem";
 import VideoListItem from "./VideoListItem";
 import "./VideoList.css";
 
-const VideoList = (props) => {
-  
-  const videoItems = props.videos.map((video) => {
+const VideoList = (props) => {  
+  const videoItems = props.videos.map((video) => {    
     if(props.format === "grid-video") {
       return (
         <VideoGridItem

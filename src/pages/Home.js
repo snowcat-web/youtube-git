@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import YTSearch from "../components/YoutubeSearch";
 import VideoBody from "../components/Video/VideoBody";
 import Navigation from "../components/Navigation";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -13,8 +13,9 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState(placeholder);    
     const location = useLocation();
     const [favorite, setFavorite] = useState(true);
+    let history = useHistory();
 
-    useEffect(() => {        
+    useEffect(() => {
         if(location.state!==undefined){
             setSearchTerm(location.state.detail);
             setPlaceholder(location.state.detail);
@@ -22,8 +23,16 @@ const Home = () => {
         }
         else{
             fetchResource(searchTerm);
-        }        
+        }
+          
     }, []);
+
+    useEffect(() => {
+        if(location.pathname==="/"){
+            setSelectedVideo(null);
+        }
+          
+    }, [location]);
 
     const fetchResource = async (item) => {
         await YTSearch(
@@ -63,7 +72,8 @@ const Home = () => {
     }
 
     const selectedVideoHandle = (video) => {
-        setSelectedVideo(video);       
+        setSelectedVideo(video);        
+        history.push('/video');
       }
 
     return (

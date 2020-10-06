@@ -4,7 +4,6 @@ import "./VideoList.css";
 const VideoListItem = (props) => {
   const video = props.video;
   const onUserSelected = props.onUserSelected;
-  console.log("lista");
   const imageUrl = video.snippet.thumbnails.default.url;
 
   return (

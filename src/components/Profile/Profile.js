@@ -1,13 +1,14 @@
 import React, { useRef } from "react";
+import { Link } from 'react-router-dom';
 import { useDetectOutsideClick } from "./useDetectOutsideClick";
-import LoginStatus from "../Login/LoginStatus";
+import {LoginStatus} from "../Login/LoginStatus";
 
 import './Profile.css';
 
-const Profile = () => {
+const Profile = (props) => {
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-    const userData = LoginStatus();
+    let userData = LoginStatus();
     let image = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";    
     let name = "?";
     
@@ -48,7 +49,7 @@ const Profile = () => {
             <ul>              
               <li>                
               {userData !=null ?
-                <a href="/#" onClick={handleClickLogOut}>Log out</a> :  <a href="/login">Log in</a>}
+                <a href="/#" onClick={handleClickLogOut}>Log out</a> : <Link to= "/login"> Login </Link> }
               </li>
               
             </ul>

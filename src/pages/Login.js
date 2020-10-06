@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import { useHistory } from "react-router-dom";
 
-import LoginInfo from '../components/Login/LoginInfo';
+import {login} from '../components/Login/LoginInfo';
 
 const Button = styled.button`
   /* Adapt the colors based on primary prop */
@@ -80,7 +80,7 @@ const Login = (props) => {
   let history = useHistory();  
   
   const HandleLogin = async () => {
-    const loginStatus = JSON.parse(await LoginInfo(userName, password));
+    const loginStatus = JSON.parse(await login(userName, password));
     if(loginStatus){
       if(loginStatus.response){
         localStorage.setItem("USER-APP", JSON.stringify(loginStatus));
