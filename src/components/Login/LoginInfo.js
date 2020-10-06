@@ -9,17 +9,17 @@ const Error = {
     response: false,
     error: "Invalid username or password",
 };
-  
-  export default async function login(username, password) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (username === 'User' && password === 'User') {
-          return resolve(JSON.stringify(User));
+    
+export function login(username, password) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (username === 'User' && password === 'User') {
+        return resolve(JSON.stringify(User));
         }
         else{
           return resolve(JSON.stringify(Error));
         }        
-      }, 500);
-    });
-  }
+    }, 500);
+  });
+}
   

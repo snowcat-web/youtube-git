@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-
-import LoginStatus from '../Login/LoginStatus';
+import {LoginStatus} from '../Login/LoginStatus';
+import {favoritePresent} from './VideoUtils';
 import './VideoList.css';
 
 const VideoSelected = (props) => {
-    const userData = LoginStatus();
-    const [favorite, setFavorite] = useState();    
+    let userData = null;
+    if(props.logged !== undefined) {
+        userData = props.logged;
+    }
+    else{
+        userData = LoginStatus();
+    }
+    const [favorite, setFavorite] = useState();
+    
     const video = props.video;
     if(!video){
         return <div>Loading...</div>;
@@ -13,22 +20,6 @@ const VideoSelected = (props) => {
     
     const videoId = video.id.videoId;
     const url = `https://www.youtube.com/embed/${videoId}`;
-
-    const favoritePresent = () => {
-      const favVideos = localStorage.getItem("favVideos") ? localStorage.getItem("favVideos") : null;
-
-      let videos = [];
-      if (favVideos != null) {
-         videos = JSON.parse(favVideos);
-      }
-      for (let i = 0; i < videos.length; i++) {
-        if (videos[i].id.videoId === videoId) {         
-          return true;
-        }       
-      }      
-      return false;
-      
-    };
 
     const handleClick = () => {
       props.addFavorite(video);      
@@ -53,14 +44,8 @@ const VideoSelected = (props) => {
       else{
         setFavorite(!favorite);
       }
-     
-      
     };
 
-    
-
-    //setFavoriteExists(favoritePresent());
-    
     return (
       <div className="video-content">
         <div>
@@ -85,7 +70,7 @@ const VideoSelected = (props) => {
           {userData!=null &&
           <div className="favorite-position">
             {" "}
-            {favoritePresent() ?
+            {favoritePresent(videoId) ?
             <button className="favorite-button" onClick={handleClickRemove}>
               Remove from favorites
             </button> :

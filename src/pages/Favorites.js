@@ -1,16 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import Navigation from '../components/Navigation';
 import VideoBody from '../components/Video/VideoBody';
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 const Favorites = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [videos, setVideos] = useState([]);
   let history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     fetchResource();
   }, []);
+
+  useEffect(() => {
+    if(location.pathname==="/favorites"){
+        setSelectedVideo(null);
+    }
+      
+}, [location]);
 
   const fetchResource = () => {
     const favVideos = localStorage.getItem("favVideos");
@@ -39,7 +47,8 @@ const Favorites = () => {
   }
 
   const selectedVideoHandle = (video) => {    
-    setSelectedVideo(video);    
+    setSelectedVideo(video);
+    history.push('/favorites/video/');
   }
 
   return (
